@@ -1,5 +1,9 @@
 ---
-title: friends
+title: 友情链接
 date: 2019-05-04 17:05:09
 ---
-It is just a test;
+Name| From
+-|-|
+[Mengzelev](https://mengzelev.github.io/)|NJU
+[谢乃容](https://jbesu.com)|NJU
+[doowzs](https://doowzs.com)|NJU
