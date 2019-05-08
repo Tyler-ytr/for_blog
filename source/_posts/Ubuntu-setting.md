@@ -125,7 +125,15 @@ https://segmentfault.com/a/1190000013612471这两篇教程;
 ##### tmux
 -   tmux是一个很优秀的分屏软件,介绍可以看jyy的PA讲义以及自己搜索教程;
 -   我使用了何伟的配置,具体见[相关内容](https://github.com/larryytr/Note_for_blog/tree/master/ubuntu)的setting
-
+-  我又加了一个插件使得tmux在重启之后状态可以恢复:
+    -   主要参考这个[知乎教程](https://zhuanlan.zhihu.com/p/24660412)
+    -   <pre><code>git clone https://github.com/tmux-plugins/tmux-resurrect ~/tmux_tmp
+        </code></pre>
+    -   在~/.tmux.conf.local里面加上:
+        <pre><code>run-shell ~/tmux_tmp/resurrect.tmux
+        </code></pre>
+    -   最后载入这个配置：<pre><code>tmux source-file ~/.tmux.conf
+        </code></pre>
 ##### vim的美化
 -   使用啦懒人vim: spf13-vim美化
 -   请看[相关内容](https://github.com/larryytr/Note_for_blog/tree/master/ubuntu)的setting，找到并且下载spf13-vim.sh,然后bash spf13-vim.sh
@@ -140,6 +148,7 @@ https://segmentfault.com/a/1190000013612471这两篇教程;
   - sudo apt-get install curl
   - sudo apt-get install gcc-multilib
 - git 配置请搜索廖雪峰
+- ctags 可以参考Mengzelev的[博客](https://mengzelev.github.io/2018/10/04/pa-inspirations/)
 
 #### To be continued
 
