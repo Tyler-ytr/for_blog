@@ -84,6 +84,35 @@ categories: 奇奇怪怪的教程
     (如果是zsh:source ~/.zshrc)
     </code></pre>
     尝试一下在终端输入ss,它lei了;
+-  因为后面的netdata需要**终端**翻墙,我也就尝试了一下,如果没有需求可以跳过这一步:
+    -   主要参考的是谷歌出来的[网站](http://www.totorocyx.me/2018/10/02/ubuntu_shadowsocks/)
+    -   首先用pip -V康康有没有pip,没有的话使用sudo apt-get install python-pip安装
+    -   下面尝试全局代理(我也不确定能不能成功)：
+        -   sudo pip install genpac
+        -   选择安装配置文件的目录,我选择的是:<pre><code>/home/larryytr/shadowsocks</code></pre>
+        -   然后执行以下命令:<pre><code>sudo genpac --proxy="SOCKS5 127.0.0.1:1080" --gfwlist-proxy="SOCKS5 127.0.0.1:1080" -o autoproxy.pac --gfwlist-url="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"</code></pre>
+        -   下面是一句搬运,我没有遇到过:<pre><code>注意：如果报错“fetch gfwlist fail.online: https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt local:None”，可以使用后面的语句：sudo genpac --proxy="SOCKS5 127.0.0.1:1080" -o autoproxy.pac --gfwlist-url="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
+        </pre></code>
+        -   执行完之后,目录下面会有一个autoproxy.pac文件。
+        -   然后在右上角,打开系统设置——网络——网络代理：“方法”选择“自动”，“配置URL”填写：
+            <pre><code>file:///home/larryytr/shadowsocks/autoproxy.pac (请根据自己的实际情况修改)</code></pre>
+    -   然后使得终端也能使用代理。我们需要**privoxy**代理工具:
+        -   安装很自然:sudo apt-get install privoxy
+        -   然后编辑配置文件<pre><code>sudo vim /etc/privoxy/config </pre></code>
+        -   在文档中搜索(vim 使用/搜索)“**listen-address**”（即监听地址），找到如下一行：**listen-address localhost:8118** 确保它没有被注释（如果这一行有#号，就手动删除）。再查找“**forward-socks5t**”，找到如下一行：**forward-socks5t / 127.0.0.1:1080** . 同样确保它没有被注释。如果没有这一行，就手动添加（注意！句尾那个点 . 是要写的！）。然后保存退出，再执行以下命令启动privoxy：
+            <pre><code>sudo privoxy --user privoxy /etc/privoxy/config</pre></code>
+        -   最后，再配置/etc/profile：<pre><code>
+                # 先进入编辑模式
+            sudo vim /etc/profile
+                 # 在末尾添加以下三行：
+            export http_proxy=http://127.0.0.1:8118
+            export https_proxy=http://127.0.0.1:8118
+            export ftp_proxy=http://127.0.0.1:8118
+                # 退出之后记得执行
+                source /etc/profile
+            </code></pre>
+        -  验证是否成功:curl www.google.com或wget www.google.com判断是否可以访问
+
 
 #### 优化美化
 -   官网安装网易云
@@ -134,6 +163,7 @@ https://segmentfault.com/a/1190000013612471这两篇教程;
         </code></pre>
     -   最后载入这个配置：<pre><code>tmux source-file ~/.tmux.conf
         </code></pre>
+
 ##### vim的美化
 -   使用啦懒人vim: spf13-vim美化
 -   请看[相关内容](https://github.com/larryytr/Note_for_blog/tree/master/ubuntu)的setting，找到并且下载spf13-vim.sh,然后bash spf13-vim.sh
@@ -149,6 +179,16 @@ https://segmentfault.com/a/1190000013612471这两篇教程;
   - sudo apt-get install gcc-multilib
 - git 配置请搜索廖雪峰
 - ctags 可以参考Mengzelev的[博客](https://mengzelev.github.io/2018/10/04/pa-inspirations/)
+-   感谢xnr给我推荐的network来查看linux的运行情况
+    -   这是netdata的官方网站:https://github.com/netdata/netdata#user-base
+    -   但是由于GFW,安装会出现报错,事实上需要终端翻墙才行
+    -   可以通过这篇[教程](https://blog.csdn.net/zhangvalue/article/details/80270169)
+        <pre><code> sudo apt-get install net-tools
+          ifconfig
+        </code></pre>
+        查看inet 之后的内容来得知自己的server_ip
+    -   成功之后,进入 http://127.0.0.1:19999/ (:19999前面的是自己的server_ip地址,请按需要更改),得到炫酷的体验
+
 
 #### To be continued
 
