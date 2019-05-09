@@ -8,7 +8,7 @@ categories: 奇奇怪怪的教程
 ---
 #### 最后编辑
 2019.5.9
-version:1.06
+version:1.07
 
 ---
 这是我今天第四次重装ubuntu,心情非常悲痛;
@@ -194,6 +194,7 @@ https://segmentfault.com/a/1190000013612471这两篇教程;
         </code></pre>
         查看inet 之后的内容来得知自己的server_ip
     -   成功之后,进入 http://127.0.0.1:19999/ (:19999前面的是自己的server_ip地址,请按需要更改),得到炫酷的体验
+    -   相应配置可以参考这篇[博客](https://cloud.tencent.com/developer/article/1181576)或者自己搜索
 
 
 #### To be continued
