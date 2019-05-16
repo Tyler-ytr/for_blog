@@ -7,3 +7,4 @@ Name| From
 [Mengzelev](https://mengzelev.github.io/)|NJU
 [forewing](https://jbesu.com)|NJU
 [doowzs](https://doowzs.com)|NJU
+[Michael Yan](https://michael1015198808.github.io/)|NJU

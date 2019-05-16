@@ -1,14 +1,15 @@
 ---
 title: Ubuntu 配置
 date: 2019-05-04 21:30:26
+author: Larry
 tags: 
     [tech,ubuntu]
 categories: 奇奇怪怪的教程
 ---
 ---
 #### 最后编辑
-2019.5.9
-version:1.07
+2019.5.16
+version:1.08
 
 ---
 这是我今天第四次重装ubuntu,心情非常悲痛;
@@ -194,10 +195,22 @@ https://segmentfault.com/a/1190000013612471这两篇教程;
         </code></pre>
         查看inet 之后的内容来得知自己的server_ip
     -   成功之后,进入 http://127.0.0.1:19999/ (:19999前面的是自己的server_ip地址,请按需要更改),得到炫酷的体验
-    -   相应配置可以参考这篇[博客](https://cloud.tencent.com/developer/article/1181576)或者自己搜索
-
+    -   相应配置可以参考这篇[博客](https://cloud.tencent.com/developer/article/1181577)或者自己搜索
+-   OSlab的kvm bug处理方法：https://bugzilla.redhat.com/show_bug.cgi?id=1479558
+    <pre><code>chmod 666 /dev/kvm to get it working right now. Then to fix future reboots, create a file /lib/udev/rules.d/99-kvm.rules with this content:
+    KERNEL=="kvm", GROUP="kvm", MODE="0666"</code></pre>
+-   texlive 安装
+    <pre><code>sudo apt install texlive-full</code></pre>
+    相关的vscode配置可以抄我的[setting](https://github.com/larryytr/Note_for_blog/tree/master/setting)
+    vscode的保存即编译请<pre><code>Ctrl+Shift+p,搜索setting,搜索Build,Latex-workshop › Synctex › After Build: Enabled打勾；</code></pre>
+-   ubuntu的截图:我参考了这篇[博客](https://blog.csdn.net/qq_17448289/article/details/56480805)
+    -   打开右上角的设置-->设备-->键盘-->快捷键,点击+
+    -   显然的配置好按键,然后在命令里面写<pre><code>gnome-screenshot -a</code></pre>
+    -   hint:上面的命令终端输入也有效
+        截屏的图在文件夹的图片(picture)里面;
 
 #### To be continued
+-   有空再研究怎么换主题;
 
 
 
